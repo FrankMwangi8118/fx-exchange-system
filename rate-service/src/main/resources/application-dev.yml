@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: rate-service
+
+exchangeRatesApi:
+  key: ${EXCHANGE_RATE_IO_API_KEY}
+  base_url: ${EXCHANGE_BASE_URL}
