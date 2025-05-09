@@ -1,16 +1,13 @@
 package com.AnvilShieldGroup.rate_service.controller.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class RequestDto {
     private String to;
     private String from;
-    private String amount;
 }

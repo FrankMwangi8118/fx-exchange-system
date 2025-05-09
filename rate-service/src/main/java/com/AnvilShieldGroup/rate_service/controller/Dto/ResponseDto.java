@@ -1,20 +1,15 @@
 package com.AnvilShieldGroup.rate_service.controller.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ResponseDto {
     private String to;
     private String from;
-    private BigDecimal amount;
-    private BigDecimal rate;
-    private BigDecimal result;
-
+    private Double rate;
 }

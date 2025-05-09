@@ -7,17 +7,17 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
-public class ExchangeRateServiceImpl implements ExchangeRateService {
+public class ExchangeRateClientImpl implements ExchangeRateClient {
     @Value("${EXCHANGE_RATE_IO_API_KEY}")
     private String apiKey;
     private final WebClient webClient;
 
-    public ExchangeRateServiceImpl(WebClient webClient) {
+    public ExchangeRateClientImpl(WebClient webClient) {
         this.webClient = webClient;
     }
 
     @Override
-    public Mono<ExternalExchangeRateResponseDto> getExchangeRate(String from, String to) {
+    public Mono<ExternalExchangeRateResponseDto> fetchExchangeRate(String from, String to) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .queryParam("apikey", apiKey)
