@@ -5,8 +5,10 @@ import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
 import com.AnvilShieldGroup.rate_service.controller.response.ApiResponse;
 import com.AnvilShieldGroup.rate_service.infrastructure.external.ExchangeRateClient;
 import com.AnvilShieldGroup.rate_service.service.ExchangeRateService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,28 +26,16 @@ public class ConversionController {
 
 
     @GetMapping("/rate")
-    public ResponseEntity<ApiResponse<ResponseDto>> convert(@RequestParam String to,
-                                                            @RequestParam String from) {
-        RequestDto requestDto = RequestDto
-                .builder()
+    public Mono<ResponseEntity<ApiResponse<ResponseDto>>> convert(@RequestParam String from,
+                                                                  @RequestParam String to) {
+        RequestDto requestDto = RequestDto.builder()
                 .from(from)
                 .to(to)
                 .build();
-        ResponseDto responseDto = currencyConversionService.getCurrencyQuote(requestDto);
-        ApiResponse<ResponseDto> apiResponse = ApiResponse.<ResponseDto>builder()
-                .data(responseDto)
-                .build();
-        return ResponseEntity.ok(apiResponse);
+        return currencyConversionService.getCurrencyQuote(requestDto)
+                .map(responseDto -> ResponseEntity.ok(ApiResponse.<ResponseDto>builder()
+                        .data(responseDto)
+                        .responseStatus("success")
+                        .build()));
     }
-    @GetMapping
-    public void rate(){
-        exchangeRateClient.fetchExchangeRate("USD","CAD").subscribe(
-                res->{
-
-                    System.out.println(res.getData().get("CAD"));
-                }
-        );
-    }
-
-
 }

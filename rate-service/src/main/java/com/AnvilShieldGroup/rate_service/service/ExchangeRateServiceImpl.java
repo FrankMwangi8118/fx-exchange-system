@@ -5,6 +5,7 @@ import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
 import com.AnvilShieldGroup.rate_service.infrastructure.external.ExchangeRateClient;
 import com.AnvilShieldGroup.rate_service.infrastructure.external.dto.ExternalExchangeRateResponseDto;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
@@ -15,25 +16,20 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
     }
 
     @Override
-    public ResponseDto getCurrencyQuote(RequestDto requestDto) {
+    public Mono<ResponseDto> getCurrencyQuote(RequestDto requestDto) {
         return getCurrencyQuoteFromExternal(requestDto);
     }
 
     @Override
-    public ResponseDto getCurrencyQuoteFromExternal(RequestDto requestDto) {
-        exchangeRateClient.fetchExchangeRate(requestDto.getTo(), requestDto.getFrom())
-                .subscribe(
-                        res->{
-                            getRate(res.getData().get(requestDto.getTo()));
-                        }
-                );
-       return ResponseDto.builder()
-               .from(requestDto.getFrom())
-               .to(requestDto.getTo())
-               .build();
+    public Mono<ResponseDto> getCurrencyQuoteFromExternal(RequestDto requestDto) {
+        return exchangeRateClient.fetchExchangeRate(requestDto.getFrom(), requestDto.getTo())
+                .map(res -> ResponseDto.builder()
+                        .from(requestDto.getFrom())
+                        .to(requestDto.getTo())
+                        .rate(res.getData().get(requestDto.getTo()))
+                        .build());
     }
-    private double getRate(double n){
-        return n;
-    }
+
+
 
 }
