@@ -3,6 +3,7 @@ package com.AnvilShieldGroup.rate_service.infrastructure.cache;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -18,11 +19,9 @@ public class CacheServiceImpl {
     private final Cache<String, Map<String, Double>> cache;
 
     public CacheServiceImpl(Cache<String, Map<String, Double>> cache) {
-        this.cache = Caffeine.newBuilder()
-                .expireAfterAccess(10, TimeUnit.MINUTES)
-                .maximumSize(2000)
-                .build();
+        this.cache = cache;
     }
+
 
     /**
      * Attempts to retrieve a cached exchange rate from the 'from' to 'to' currency.
