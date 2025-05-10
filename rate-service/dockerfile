@@ -1,0 +1,13 @@
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY todo
+EXPOSE 8080
+
+# 1-limit heap size to 80% of the container memory
+# 2-use G1 garbage collector
+# 3-container exits cleanly on OOM error
+CMD ["java",
+     "-XX:MaxRAMPercentage=80.0",
+     "-XX:+UseG1GC",
+     "-XX:+ExitOnOutOfMemoryError",
+     "-jar", "/app/app.jar"]
