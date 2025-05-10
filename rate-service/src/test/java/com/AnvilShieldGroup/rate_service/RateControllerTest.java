@@ -120,7 +120,7 @@ public class RateControllerTest {
         Set<ConstraintViolation<RequestDto>> violations = new HashSet<>();
         violations.add(violation);
         when(validator.validate(any(RequestDto.class))).thenReturn(violations);
-        webTestClient.get().uri("/api/v1/rateService/rate?from=&to=EUR") // Use invalid data to trigger validation
+        webTestClient.get().uri("/api/v1/rateService/rate?from=&to=EUR") //to is null
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isBadRequest() // Expect HTTP 400 Bad Request
