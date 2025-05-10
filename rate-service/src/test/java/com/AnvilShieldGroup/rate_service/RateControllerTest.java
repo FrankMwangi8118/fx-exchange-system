@@ -1,6 +1,6 @@
 package com.AnvilShieldGroup.rate_service;
 
-import com.AnvilShieldGroup.rate_service.controller.ConversionController; // Import the actual controller
+import com.AnvilShieldGroup.rate_service.controller.ExchangeRateController; // Import the actual controller
 import com.AnvilShieldGroup.rate_service.controller.Dto.RequestDto;
 import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
 import com.AnvilShieldGroup.rate_service.controller.response.ApiResponse;
@@ -9,7 +9,6 @@ import com.AnvilShieldGroup.rate_service.exception.GlobalExceptionHandler; // Im
 import com.AnvilShieldGroup.rate_service.infrastructure.external.ExchangeRateClient;
 import com.AnvilShieldGroup.rate_service.service.ExchangeRateService;
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@WebFluxTest(ConversionController.class)
+@WebFluxTest(ExchangeRateController.class)
 @Import(GlobalExceptionHandler.class)
 public class RateControllerTest {
     @Autowired
