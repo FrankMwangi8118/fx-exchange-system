@@ -8,21 +8,25 @@ import com.AnvilShieldGroup.rate_service.service.ExchangeRateService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/rateService")
-public class ExchangeRateController {
+public class ConversionController {
     private final Validator validator;
     private final ExchangeRateService currencyConversionService;
     private final ExchangeRateClient exchangeRateClient;
 
-    public ExchangeRateController(Validator validator, ExchangeRateService currencyConversionService, ExchangeRateClient exchangeRateClient) {
+    public ConversionController(Validator validator, ExchangeRateService currencyConversionService, ExchangeRateClient exchangeRateClient) {
         this.validator = validator;
         this.currencyConversionService = currencyConversionService;
         this.exchangeRateClient = exchangeRateClient;

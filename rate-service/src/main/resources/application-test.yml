@@ -1,2 +1,0 @@
-externalApi:
-  key: ${EXCHANGE_RATE_TEST_API_KEY}
