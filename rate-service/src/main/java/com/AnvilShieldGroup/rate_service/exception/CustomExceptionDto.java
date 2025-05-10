@@ -15,10 +15,4 @@ public class CustomExceptionDto{
     private final Integer responseCode;
     private final String path;
 
-    public CustomExceptionDto(String message, String responseMessage, Integer responseCode, String path) {
-        this.responseMessage = responseMessage;
-        this.responseCode = responseCode;
-
-        this.path = path;
-    }
 }
