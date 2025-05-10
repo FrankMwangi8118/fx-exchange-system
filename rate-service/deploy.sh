@@ -32,3 +32,5 @@ docker run -d \
   -e EXCHANGE_RATE_TEST_API_KEY="$EXCHANGE_RATE_TEST_API_KEY" \
   --name "$NAME" \
   "$IMAGE"
+
+  docker logs -f $name
