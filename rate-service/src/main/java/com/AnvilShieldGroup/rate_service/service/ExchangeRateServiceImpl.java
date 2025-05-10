@@ -9,41 +9,52 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
+
+    // External client to fetch exchange rates
     private final ExchangeRateClient exchangeRateClient;
+
+    // Cache service to store and retrieve rates
     private final CacheServiceImpl cacheService;
 
+    // Constructor-based dependency injection
     public ExchangeRateServiceImpl(ExchangeRateClient exchangeRateClient, CacheServiceImpl cacheService) {
         this.exchangeRateClient = exchangeRateClient;
         this.cacheService = cacheService;
     }
 
+    // Entry point method for getting currency quote, delegates to external source
     @Override
     public Mono<ResponseDto> getCurrencyQuote(RequestDto requestDto) {
-
         return getCurrencyQuoteFromExternal(requestDto);
     }
 
+    // Retrieves the exchange rate from cache or external API
     @Override
     public Mono<ResponseDto> getCurrencyQuoteFromExternal(RequestDto requestDto) {
         String from = requestDto.getFrom();
         String to = requestDto.getTo();
 
+        // First, check if the exchange rate is in the cache
         Double cachedRate = cacheService.getRateFromCache(from, to);
-        if (cachedRate != null){
+        if (cachedRate != null) {
+            // If found in cache, return it as a response
             return Mono.just(ResponseDto.builder()
-                            .from(from)
-                            .to(to)
-                            .rate(cachedRate)
+                    .from(from)
+                    .to(to)
+                    .rate(cachedRate)
                     .build());
         }
-        return exchangeRateClient.fetchExchangeRate(from,to)
-                .map(res->{
-                Double rate=res.getData().get(to);
-                    passToCacheService(from,to,rate);
+
+        // If not found in cache, fetch from external API
+        return exchangeRateClient.fetchExchangeRate(from, to)
+                .map(res -> {
+                    Double rate = res.getData().get(to);
+                    // Cache the newly fetched rate for future use
+                    passToCacheService(from, to, rate);
+                    // Build and return the response
                     return ResponseDto.builder()
                             .from(from)
                             .to(to)
@@ -51,12 +62,11 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
                             .build();
                 });
     }
-    private void passToCacheService(String from ,String to,Double rate){
-        HashMap<String, Double>rateMap=new HashMap<>();
-        rateMap.put(to,rate);
-        cacheService.putRate(from,rateMap);
 
+    // Helper method to pass the rate to the cache service
+    private void passToCacheService(String from, String to, Double rate) {
+        HashMap<String, Double> rateMap = new HashMap<>();
+        rateMap.put(to, rate);
+        cacheService.putRate(from, rateMap);
     }
-
-
-    }
+}

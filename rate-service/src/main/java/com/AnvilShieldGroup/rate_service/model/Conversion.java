@@ -5,5 +5,4 @@ import java.math.BigDecimal;
 public class Conversion {
     private String to;
     private String from;
-    private BigDecimal amount;
 }

@@ -5,3 +5,22 @@ spring:
 exchangeRatesApi:
   key: ${EXCHANGE_RATE_IO_API_KEY}
   base_url: ${EXCHANGE_BASE_URL}
+
+cache:
+  ttl: ${CACHE_TTL}
+  maximum:
+    size: ${CACHE_MAXIMUM_SIZE}
+  entry:
+    schedule-time: ${CACHE_ENTRY_SCHEDULE_TIME}
+webclient:
+  connection:
+    timeout: ${WEBCLIENT_CONNECTION_TIMEOUT}
+  response:
+    timeout: ${WEBCLIENT_RESPONSE_TIMEOUT}
+  read:
+    timeout: ${WEBCLIENT_READ_TIMEOUT}
+  write:
+    timeout: ${WEBCLIENT_WRITE_TIMEOUT}
+  pool:
+    max-connections: 50
+    acquire-timeout: 2000
