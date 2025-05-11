@@ -10,11 +10,10 @@ else
   echo ".env file not found!"
   exit 1
 fi
-
 NAME="$APPLICATION_NAME"
 IMAGE="$IMAGE_NAME"
 PORT="$SERVER_PORT"
-
+docker build -t "$IMAGE" .
 JAVA_OPTS="$JAVA_OPTS -Dspring.profiles.active=$ACTIVE_PROFILE"
 docker run -d \
   -p "$PORT:$PORT" \

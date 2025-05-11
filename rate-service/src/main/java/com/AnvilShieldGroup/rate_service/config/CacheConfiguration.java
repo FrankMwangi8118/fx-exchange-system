@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class CacheConfiguration {
     @Value("${cache.ttl}")
-    private Long cacheTtl;
+    private Duration cacheTtl;
     @Value("${cache.maximum.size}")
     private Long cacheMaximumSize;
     @Bean
     public Cache<String, Map<String, Double>> cache() {
         return Caffeine.newBuilder()
-                .expireAfterAccess(cacheTtl, TimeUnit.MINUTES)
+                .expireAfterAccess(10,TimeUnit.MINUTES)
                 .maximumSize(cacheMaximumSize)
                 .build();
     }

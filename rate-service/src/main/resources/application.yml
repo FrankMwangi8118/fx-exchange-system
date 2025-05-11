@@ -1,8 +1,13 @@
 spring:
    application:
       name: rate-service
+
    profiles:
       active: ${ACTIVE_PROFILE}
+
+   output:
+      ansi:
+         enabled: ALWAYS
 
 springdoc:
    info:
@@ -10,9 +15,13 @@ springdoc:
       description: API for fetching exchange rates
       version: 1.0.0
       contact:
-         name: Your Name
-         email: your.email@example.com
-         url: http://your-website.com
+         name: frank mwangi
+         email: thetechguy499@gmail.com
+         url:
       license:
          name: Apache 2.0
          url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+logging:
+   file:
+      name: ./log

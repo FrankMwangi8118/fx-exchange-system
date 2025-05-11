@@ -20,6 +20,7 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class ExchangeRateServiceTest {
 
@@ -47,7 +48,6 @@ public class ExchangeRateServiceTest {
     }
 
 
-
     @Test
     void onCacheHit() {
         when(cacheService.getRateFromCache(fromCurrency, toCurrency)).thenReturn(cachedRate);
@@ -63,13 +63,11 @@ public class ExchangeRateServiceTest {
         verify(exchangeRateClient, never()).fetchExchangeRate(anyString(), anyString());
         verify(cacheService, never()).putRate(anyString(), anyMap());
     }
+
     @Test
     void onCacheMissFetchFromExternal() {
-        // Arrange: Configure the mock cacheService to return null (simulate cache miss)
         when(cacheService.getRateFromCache(fromCurrency, toCurrency)).thenReturn(null);
 
-        // Arrange: Configure the mock exchangeRateClient to return a successful Mono
-        // This simulates the external API returning a response.
         ExternalExchangeRateResponseDto externalResponse = new ExternalExchangeRateResponseDto();
         Map<String, Double> data = new HashMap<>();
         data.put(toCurrency, externalRate);
@@ -77,29 +75,19 @@ public class ExchangeRateServiceTest {
 
         when(exchangeRateClient.fetchExchangeRate(fromCurrency, toCurrency)).thenReturn(Mono.just(externalResponse));
 
-        // Act: Call the method under test
         Mono<ResponseDto> resultMono = exchangeRateService.getCurrencyQuoteFromExternal(requestDto);
 
-        // Assert: Use StepVerifier to test the reactive stream
         StepVerifier.create(resultMono)
                 .expectNextMatches(responseDto ->
-                        // Verify the emitted ResponseDto contains the expected data from the external call
                         responseDto.getFrom().equals(fromCurrency) &&
                                 responseDto.getTo().equals(toCurrency) &&
                                 responseDto.getRate().equals(externalRate)
                 )
-                .verifyComplete(); // Verify the Mono completes successfully after emitting the item
-
-        // Assert: Verify interactions with mocks
-        // Verify cacheService.getRateFromCache was called exactly once with correct arguments
+                .verifyComplete();
         verify(cacheService, times(1)).getRateFromCache(fromCurrency, toCurrency);
-        // Verify exchangeRateClient.fetchExchangeRate was called exactly once with correct arguments
         verify(exchangeRateClient, times(1)).fetchExchangeRate(fromCurrency, toCurrency);
-        // Verify cacheService.putRate was called exactly once with correct arguments
-        // We expect it to be called with the 'from' currency and a map containing the 'to' currency and the fetched rate
         verify(cacheService, times(1)).putRate(eq(fromCurrency), anyMap());
-        // Optional: More specific verification of the map content passed to putRate
-        // verify(cacheService, times(1)).putRate(eq(fromCurrency), argThat(map -> map.containsKey(toCurrency) && map.get(toCurrency).equals(externalRate)));
+
     }
 
     @Test
