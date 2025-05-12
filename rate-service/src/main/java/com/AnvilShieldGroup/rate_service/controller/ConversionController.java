@@ -91,6 +91,7 @@ public class ConversionController {
                 .map(responseDto -> ResponseEntity.ok(
                         // Use the fully qualified name for your custom ApiResponse class here
                         com.AnvilShieldGroup.rate_service.controller.response.ApiResponse.<ResponseDto>builder()
+                                .responseCode(HttpStatus.OK.value())
                                 .data(responseDto)
                                 .responseStatus("success")
                                 .build()));

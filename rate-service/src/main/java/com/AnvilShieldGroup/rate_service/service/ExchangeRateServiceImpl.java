@@ -12,20 +12,15 @@ import java.util.HashMap;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
-
-    // External client to fetch exchange rates
     private final ExchangeRateClient exchangeRateClient;
 
-    // Cache service to store and retrieve rates
     private final CacheServiceImpl cacheService;
 
-    // Constructor-based dependency injection
     public ExchangeRateServiceImpl(ExchangeRateClient exchangeRateClient, CacheServiceImpl cacheService) {
         this.exchangeRateClient = exchangeRateClient;
         this.cacheService = cacheService;
     }
 
-    // Entry point method for getting currency quote, delegates to external source
     @Override
     public Mono<ResponseDto> getCurrencyQuote(RequestDto requestDto) {
         return getCurrencyQuoteFromExternal(requestDto);

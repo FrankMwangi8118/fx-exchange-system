@@ -24,14 +24,18 @@ public class SchedulerServiceImpl implements SchedulerService {
         this.cacheService = cacheService;
     }
 
-    @Override
 
+    /**
+     * a job that fetches rates of major/mostly exchanges/mostly traded currencies.
+     * then caches them in caffeine to reduce api hits
+     */
+    @Override
     @Scheduled(fixedRateString = "${cache.entry.schedule-time}")
     public void preFetchMajorCurrenciesRates() {
-        List<String> majorCurrencies = List.of("USD", "EUR", "JPY", "GBP","CAD","CHF","AUD");
-        for (String currency: majorCurrencies) {
-           ExternalExchangeRateResponseDto externalExchangeRateResponseDto= exchangeRateClient.fetchExchangeRate(currency,null).block();
-           cacheService.putRate(currency,externalExchangeRateResponseDto.getData());
+        List<String> majorCurrencies = List.of("USD", "EUR", "JPY", "GBP", "CAD", "CHF", "AUD");
+        for (String currency : majorCurrencies) {
+            ExternalExchangeRateResponseDto externalExchangeRateResponseDto = exchangeRateClient.fetchExchangeRate(currency, null).block();
+            cacheService.putRate(currency, externalExchangeRateResponseDto.getData());
         }
 
     }
