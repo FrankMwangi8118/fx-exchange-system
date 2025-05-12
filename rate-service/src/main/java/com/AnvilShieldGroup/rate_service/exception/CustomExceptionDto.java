@@ -8,8 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 
-// a record is optional but i din,t see the use of the toString method
-
+// a record is optional
 public class CustomExceptionDto{
     private final String responseMessage;
     private final Integer responseCode;
