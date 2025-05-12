@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: main-service
+
+  profiles:
+    active: ${ACTIVE_PROFILE}
+  output:
+    ansi:
+      enabled: ALWAYS

@@ -1,6 +1,7 @@
 package com.AnvilShieldGroup.rate_service.controller;
-
-// --- Springdoc OpenAPI Imports ---
+import com.AnvilShieldGroup.rate_service.controller.Dto.RequestDto;
+import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
+import com.AnvilShieldGroup.rate_service.exception.CustomExceptionDto;
 
 import com.AnvilShieldGroup.rate_service.infrastructure.external.ExchangeRateClient;
 import com.AnvilShieldGroup.rate_service.service.ExchangeRateService;
@@ -12,11 +13,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse; // Swagger Annotation
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-// ---------------------------------
 
-import com.AnvilShieldGroup.rate_service.controller.Dto.RequestDto;
-import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
-import com.AnvilShieldGroup.rate_service.exception.CustomExceptionDto; // Assuming this exists for error responses
+
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

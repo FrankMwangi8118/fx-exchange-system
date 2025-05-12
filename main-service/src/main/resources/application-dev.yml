@@ -1,0 +1,11 @@
+server:
+  port: ${SERVER_PORT}
+rate-service:
+  base:
+    url: ${RATE-SERVICE_BASE_URL}
+spring:
+  datasource:
+    url: jdbc:${POSTGRES_PROVIDER}://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+    password: ${POSTGRES_PASSWORD}
+    username: ${POSTGRES_USERNAME}
+    driver-class-name: ${DRIVER_CLASS_NAME}

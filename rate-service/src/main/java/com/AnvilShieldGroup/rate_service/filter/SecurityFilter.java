@@ -58,7 +58,7 @@ public class SecurityFilter implements WebFilter {
             // Extract API credentials from request headers
             String apiKey = request.getHeaders().getFirst(API_KEY_HEADER);
             String apiPassphrase = request.getHeaders().getFirst(API_PASSPHRASE_HEADER);
-
+log.info("dat:{} :{}",apiPassphrase,apiKey);
             // Validate the credentials
             if (expectedApiKey.equals(apiKey) && expectedApiPassphrase.equals(apiPassphrase)) {
                 log.info("Request ID: {} - API Key Auth SUCCESS for {}", MDC.get(REQUEST_ID_MDC_KEY), path);

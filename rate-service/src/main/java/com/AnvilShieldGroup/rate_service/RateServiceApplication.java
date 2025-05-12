@@ -1,7 +1,6 @@
 package com.AnvilShieldGroup.rate_service;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
