@@ -1,29 +1,28 @@
-package com.AnvilShieldGroup.rate_service.exception;
-
-// Import the WebFlux equivalent
-
-import org.springframework.http.server.reactive.ServerHttpRequest;
+package com.AnvilShieldGroup.main_service.exception;
 
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.server.ServerWebExchange;
 
 import java.util.stream.Collectors;
 
+@Slf4j
 @ControllerAdvice
-
 public class GlobalExceptionHandler {
-
-    // Handle timeouts
     @ExceptionHandler({
             java.util.concurrent.TimeoutException.class,
             io.netty.handler.timeout.ReadTimeoutException.class
     })
     public ResponseEntity<CustomExceptionDto> handleTimeoutExceptions(Exception ex, ServerHttpRequest request) {
+        log.warn("external server timed out");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
                 CustomExceptionDto.builder()
                         .responseCode(HttpStatus.SERVICE_UNAVAILABLE.value())
@@ -33,7 +32,7 @@ public class GlobalExceptionHandler {
         );
     }
 
-    // Handle unknown host (DNS issues)/network issues
+    //similiar to java.net  handles dns issues ie net issues
     @ExceptionHandler(java.net.UnknownHostException.class)
     public ResponseEntity<CustomExceptionDto> handleUnknownHost(Exception ex, ServerHttpRequest request) {
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
@@ -52,14 +51,11 @@ public class GlobalExceptionHandler {
                 CustomExceptionDto.builder()
                         .responseCode(HttpStatus.SERVICE_UNAVAILABLE.value())
                         .responseMessage("External service is unreachable: Connection failed")
-                        // *** Get path from ServerHttpRequest ***
                         .path(request.getURI().getPath())
                         .build()
         );
     }
 
-    // handles webclient exception ie 401,404,422
-    // main   unprocessable entity
     @ExceptionHandler(WebClientResponseException.class)
     public ResponseEntity<CustomExceptionDto> handleWebClientResponseException(WebClientResponseException ex, ServerHttpRequest request) {
         HttpStatus status = HttpStatus.resolve(ex.getStatusCode().value());
@@ -71,15 +67,14 @@ public class GlobalExceptionHandler {
                         .build()
         );
     }
-
     //handle validation errors
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<CustomExceptionDto> handleConstraintViolationException(
-            ConstraintViolationException ex,
-            ServerHttpRequest request) {
 
-        String errorMessages = ex.getConstraintViolations().stream()
-                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
+    @ExceptionHandler(WebExchangeBindException.class)
+    public ResponseEntity<CustomExceptionDto> handleWebExchangeBindException(WebExchangeBindException ex,
+                                                                             ServerHttpRequest request) {
+        log.warn("validation failed for request with request id :{}",request.getId());
+        String errorMessages = ex.getFieldErrors().stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
                 .collect(Collectors.joining(" | "));
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
@@ -91,14 +86,13 @@ public class GlobalExceptionHandler {
         );
     }
 
-
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<CustomExceptionDto> handleRuntimeException(RuntimeException ex, ServerHttpRequest request) {
-        // Log the error
+        log.warn("a runtime exception occurred:{}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                 CustomExceptionDto.builder()
                         .responseCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                        .responseMessage("An unexpected error occurred: " + ex.getMessage())
+                        .responseMessage("An unexpected error occurred: ")
                         .path(request.getURI().getPath())
                         .build()
         );
@@ -114,4 +108,5 @@ public class GlobalExceptionHandler {
                         .build()
         );
     }
+
 }

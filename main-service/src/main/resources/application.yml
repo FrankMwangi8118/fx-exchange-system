@@ -7,3 +7,6 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+logging:
+  file:
+    name: ./mainLogs
