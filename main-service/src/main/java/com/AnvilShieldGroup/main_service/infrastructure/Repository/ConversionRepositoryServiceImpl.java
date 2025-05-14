@@ -7,6 +7,9 @@ import com.AnvilShieldGroup.main_service.util.IdGeneratorUtil;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 @Repository
 public class ConversionRepositoryServiceImpl implements ConversionRepositoryService {
     private final IdGeneratorUtil idGeneratorUtil;
@@ -32,6 +35,7 @@ public class ConversionRepositoryServiceImpl implements ConversionRepositoryServ
                 .requestedAt(conversion.getRequestedAt())
                 .convertedAmount(conversion.getConvertedAmount())
                 .amount(conversion.getAmount())
+                .requestedAt(Timestamp.from(Instant.now()))
                 .build();
     int affectedRows=jdbcTemplate.update(
             JdbcQueries.PERSIST_QUERY,

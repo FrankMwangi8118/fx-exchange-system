@@ -1,12 +1,12 @@
 package com.AnvilShieldGroup.main_service.service;
 
 import com.AnvilShieldGroup.main_service.controller.dto.RequestDto;
+import com.AnvilShieldGroup.main_service.controller.dto.ResponseDto;
 import com.AnvilShieldGroup.main_service.infrastructure.Repository.ConversionRepositoryService;
 import com.AnvilShieldGroup.main_service.infrastructure.external.FetchRateClient;
 import com.AnvilShieldGroup.main_service.model.Conversion;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 import java.math.BigDecimal;
@@ -23,7 +23,7 @@ public class ConversionServiceImpl implements ConversionService {
 
 
     @Override
-    public Mono<Conversion> convertCurrency(RequestDto requestDto) {
+    public Mono<ResponseDto> convertCurrency(RequestDto requestDto) {
         return getRateFromExternal(requestDto.getFrom(), requestDto.getTo())
                 .flatMap(rate ->
                         {
@@ -34,7 +34,7 @@ public class ConversionServiceImpl implements ConversionService {
                             conversion.setRate(rate);
                             conversion.setAmount(requestDto.getAmount());
                             conversion.setConvertedAmount(calculatedAmount);
-                            return Mono.fromCallable(() -> conversionRepositoryService.save(conversion))
+                            return Mono.fromCallable(() -> conversionRepositoryService.save(conversion).toResponseDto())
                                     .subscribeOn(Schedulers.boundedElastic());
                         }
                 );

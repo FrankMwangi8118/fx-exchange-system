@@ -1,11 +1,11 @@
 package com.AnvilShieldGroup.main_service.controller;
 
+import com.AnvilShieldGroup.main_service.controller.dto.ApiResponse;
 import com.AnvilShieldGroup.main_service.controller.dto.RequestDto;
-import com.AnvilShieldGroup.main_service.infrastructure.external.FetchRateClient;
-import com.AnvilShieldGroup.main_service.infrastructure.external.FetchRateClientImpl;
-import com.AnvilShieldGroup.main_service.infrastructure.external.dto.ExternalApiResponse;
 import com.AnvilShieldGroup.main_service.service.ConversionService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -15,11 +15,16 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class ConversionController {
     private final ConversionService conversionService;
+
     @GetMapping
-    public Mono<ResponseEntity<?>> convert(@RequestBody RequestDto requestDto){
+    public Mono<ResponseEntity<ApiResponse>> convert(@RequestBody RequestDto requestDto) {
         return conversionService.convertCurrency(requestDto)
-                .map(saved -> ResponseEntity.ok(saved)); // this triggers the reactive pipeline
-    }
-
-
-}
+                .map(responseDto -> ResponseEntity.ok(
+                        ApiResponse.builder()
+                                .responseCode(200)
+                                .responseMessage("success")
+                                .responseStatus("success")
+                                .data(responseDto)
+                                .build()
+                ));
+    }}

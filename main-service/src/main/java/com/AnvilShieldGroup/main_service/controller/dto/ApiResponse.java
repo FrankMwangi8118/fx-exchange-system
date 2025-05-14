@@ -11,9 +11,9 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse<T>{
+public class ApiResponse{
     private Integer responseCode;
     private String responseStatus;
     private String responseMessage;
-    private T data;
+    private Object data;
 }

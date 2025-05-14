@@ -12,11 +12,11 @@ import lombok.*;
 @Builder
 public class RequestDto {
     @Size(min = 3,max = 3,message = "'to' must be exactly 3 letters")
-    @Pattern(regexp ="^[A-Z]{3}$", message = " 'to' must contain exactly three uppercase letters" )
+    @Pattern(regexp ="^[A-Z]{3}$", message = " 'to' must contain exactly three uppercase letters as per ISO 4217" )
     private String to;
 
     @NotNull(message = "'from' cannot be null")
     @Size(min = 3,max = 3,message = "'from' must be exactly 3 letters")
-    @Pattern(regexp ="^[A-Z]{3}$", message = " 'from' must contain exactly three uppercase letters" )
+    @Pattern(regexp ="^[A-Z]{3}$", message = " 'from' must contain exactly three uppercase letters ISO 4217" )
     private String from;
 }
