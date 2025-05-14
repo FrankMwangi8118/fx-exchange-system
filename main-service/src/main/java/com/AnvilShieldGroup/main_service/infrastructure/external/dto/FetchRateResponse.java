@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ExternalApiResponse{
+public class FetchRateResponse {
     private Integer responseCode;
     private String responseStatus;
     private String responseMessage;
