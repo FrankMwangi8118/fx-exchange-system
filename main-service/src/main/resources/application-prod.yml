@@ -9,3 +9,6 @@ spring:
     password: ${POSTGRES_PASSWORD}
     username: ${POSTGRES_PORT}
     driver-class-name: ${DRIVER_CLASS_NAME}
+api:
+  key: ${API-KEY}
+  passphrase: ${api-passphrase}

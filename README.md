@@ -123,7 +123,7 @@ for rate service
 ```bash
 cd rate-service
 chmod +x deploy.sh
-. deploy.sh
+./deploy.sh
 ```
 
 for main-service
@@ -133,7 +133,7 @@ for main-service
 ```bash
 cd main-service
 chmod +x deploy.sh
-. deploy.sh
+./deploy.sh
 ```
 
 (Alternatively, you can build manually:mvn clean package -DskipTests followed by docker-compose build)
@@ -152,8 +152,8 @@ docker-compose up -d
 
 ### 6. Verify Services:
 
-- Check the status of rate-service: GET http://localhost:8081/status (Expected: { "status": "UP" })
-- Check the status of main-service: GET http://localhost:8080/status (Expected: { "status": "UP" })
+- Check the status of rate-service: GET http://localhost:8081/api/v1/rateService/status (Expected: { "status": "UP" })
+- Check the status of main-service: GET http://localhost:8080/api/v1/mainService/status (Expected: { "status": "UP" })
 
 ### 7.Accessing the API:
 

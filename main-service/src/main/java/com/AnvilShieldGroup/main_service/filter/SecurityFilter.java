@@ -5,6 +5,7 @@ import com.AnvilShieldGroup.main_service.exception.CustomExceptionDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -35,12 +36,12 @@ public class SecurityFilter implements WebFilter {
     private static final String API_KEY_HEADER = "api-key";
     private static final String API_PASSPHRASE_HEADER = "api-passphrase";
 
-    // MDC (Mapped Diagnostic Context) key for logging the request ID
     private static final String REQUEST_ID_MDC_KEY = "requestId";
 
-    // Expected credentials (hardcoded for now – can be externalized later)
-    private String expectedApiKey = "frank";
-    private String expectedApiPassphrase = "frank";
+    @Value("${api-key}")
+    private String expectedApiKey ;
+    @Value("${api-passphrase}")
+    private String expectedApiPassphrase;
 
     // ObjectMapper is used to convert Java objects to JSON
     private final ObjectMapper objectMapper = new ObjectMapper();
