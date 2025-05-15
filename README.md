@@ -165,3 +165,65 @@ credentials (as configured in the security setup and.env file) to access the /co
 
 A critical challenge when relying on external, rate-limited APIs like [freecurrencyapi.com](freecurrencyapi.com) is balancing data freshness with API usage constraints. A naive caching approach could still lead to frequent API calls for uncached pairs or cache misses.
 This project implements a background-aware lazy caching strategy using Caffeine , specifically tailored to handle both frequently and infrequently requested currency pairs efficiently.
+
+- **Cache Structure**:
+  Exchange rates are stored in a nested map structure within the cache:
+  **Map<String, Map<String, Double>>**
+  , where the outer key is the 'from' currency, the inner map key is the 'to' currency, and the value is the exchange rate.
+
+-  **Background Refresh**:
+A scheduled job runs every 20 minutes. This job is designed to intelligently refresh rates for currency pairs that are
+currently present in the cache
+. This ensures that rates for actively used pairs (including major/mostly traded currencies that have been requested) are kept relatively fresh in the background, minimizing the need for synchronous API calls during user requests for these pairs.
+
+Lazy On-Demand Fetching:
+When a request comes in for a
+from
+/
+to
+currency pair:
+- The cache is checked first. If the rate is found and is not expired, it's returned immediately (low latency).
+- If the rate is not found in the cache (either never requested before, or evicted), the system performs a synchronous fetch from the external freecurrencyapi.com.
+- Crucially, after a successful fetch for a previously uncached pair, the retrieved rate is added to the cache. This means the cache dynamically learns and grows based on actual user request patterns, storing rates for less common pairs after their first lookup.
+
+ **Reduced API Load:** By prioritizing background refreshes for existing cache entries and handling initial fetches for new pairs on demand (and then caching them), the number of calls to the external API is significantly reduced compared to fetching every time or only caching a fixed set.
+- Improved Resilience: If the background job fails or the external API is temporarily unavailable, the system can still serve slightly stale data from the cache, providing graceful degradation.
+- Scalability: The caching layer absorbs most read load, allowing the rate-service to handle a high volume of requests without overwhelming the external API.
+
+**the images..some numbers may look like exagerated but test was done for almost equal periods.** 
+![img_1.png](img_1.png)
+
+**before using caching**
+
+![img_2.png](img_2.png)
+
+**Result:**
+This strategy successfully reduced the probability of hitting the external API rate limit from an estimated 80% (with a naive approach) to
+under 5%
+, while maintaining low latency for users and ensuring the system is resilient, adaptive, and cost-efficient under load. The dynamic caching of requested pairs ensures the cache becomes more effective over time based on real-world usage.
+
+## Future Enhancements
+
+- **Distributed Caching with Redis**:
+Explore and implement a distributed caching solution like
+Redis
+to allow the
+rate-service
+to scale horizontally while maintaining a shared cache state. This would further improve resilience and performance under high load across multiple instances.
+
+- **API Rate Limiting**:
+  Implement
+  rate limiting
+  on the
+  main-service
+  API (e.g., using Spring Cloud Gateway or a library like Bucket4j) to protect the service from abuse and ensure fair usage among clients.
+
+- **Schema Migrations**:
+  Introduce a database migration tool like
+  Flyway or Liquibase
+  to manage database schema evolution in a more controlled and versioned manner, which is crucial for production environments.
+
+Contact
+- Your Name: Frank mwangi
+- LinkedIn: https://www.linkedin.com/in/frank-mwangi-dev/
+- Email: frankmwangi@gmail.com
