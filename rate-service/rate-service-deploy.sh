@@ -4,7 +4,7 @@ set -e
 # Load environment variables from .env
 if [ -f .env ]; then
   set -o allexport
-  source .env
+    source .env
   set +o allexport
 else
   echo ".env file not found!"

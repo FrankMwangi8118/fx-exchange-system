@@ -3,6 +3,9 @@ server:
 rate-service:
   base:
     url: ${RATE-SERVICE_BASE_URL}
+  api:
+    key: ${RATE-SERVICE-API-KEY}
+    passphrase: ${RATE-SERVICE-API-PASSPHRASE}
 spring:
   datasource:
     url: jdbc:${POSTGRES_PROVIDER}://${POSTGRES_HOST}:${POSTGRES_PORT}/{POSTGRES_DB}
@@ -12,3 +15,5 @@ spring:
 api:
   key: ${API-KEY}
   passphrase: ${api-passphrase}
+
+

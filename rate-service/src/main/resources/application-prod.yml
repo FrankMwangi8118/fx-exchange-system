@@ -24,3 +24,6 @@ webclient:
   pool:
     max-connections: 50
     acquire-timeout: 2000
+api:
+  key: ${EXCHANGE_RATE_TEST_API_KEY}
+  passphrase: ${EXCHANGE_RATE_TEST_API_PASSPHRASE}

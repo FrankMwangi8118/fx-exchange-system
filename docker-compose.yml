@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: currency-postgres
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - currency_db_data:/var/lib/postgresql/data
+      - ./main-service/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    restart: unless-stopped
+
+  rate-service:
+    build:
+      context: ./rate-service
+      dockerfile: Dockerfile
+    container_name: currency-rate-service
+    ports:
+      - "${RATE_SERVICE_PORT}:8081"
+    environment:
+      - SERVER_PORT=${RATE_SERVICE_PORT}
+      - APPLICATION_NAME=rate-service
+      - IMAGE_NAME=rate-service
+      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
+      - EXCHANGE_RATE_IO_API_KEY=${EXCHANGE_RATE_IO_API_KEY}
+      - EXCHANGE_BASE_URL=${EXCHANGE_BASE_URL}
+      - CACHE_TTL=${CACHE_TTL}
+      - CACHE_MAXIMUM_SIZE=${CACHE_MAXIMUM_SIZE}
+      - CACHE_ENTRY_SCHEDULE_TIME=${CACHE_ENTRY_SCHEDULE_TIME}
+      - WEBCLIENT_CONNECTION_TIMEOUT=${WEBCLIENT_CONNECTION_TIMEOUT}
+      - WEBCLIENT_RESPONSE_TIMEOUT=${WEBCLIENT_RESPONSE_TIMEOUT}
+      - WEBCLIENT_READ_TIMEOUT=${WEBCLIENT_READ_TIMEOUT}
+      - WEBCLIENT_WRITE_TIMEOUT=${WEBCLIENT_WRITE_TIMEOUT}
+      - EXCHANGE_RATE_TEST_API_KEY=${EXCHANGE_RATE_TEST_API_KEY}
+      - EXCHANGE_RATE_TEST_API_PASSPHRASE=${EXCHANGE_RATE_TEST_API_PASSPHRASE}
+      - JAVA_OPTS=${JAVA_OPTS}
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+
+  main-service:
+    build:
+      context: ./main-service
+      dockerfile: Dockerfile
+    container_name: currency-main-service
+    ports:
+      - "${SERVER_PORT}:8081"
+    environment:
+      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
+      - SERVER_PORT=8081
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - RATE_SERVICE_BASE_URL=http://rate-service:8081/api/v1/rateService
+      - RATE-SERVICE-API-KEY=${API-KEY}
+      - RATE-SERVICE-API-PASSPHRASE=${API-PASSPHRASE}
+      - API-KEY=${API-KEY}
+      - API-PASSPHRASE=${API-PASSPHRASE}
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - rate-service
+    restart: unless-stopped
+
+volumes:
+  currency_db_data:

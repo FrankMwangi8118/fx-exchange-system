@@ -4,6 +4,7 @@ import com.AnvilShieldGroup.rate_service.exception.CustomExceptionDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -36,10 +37,10 @@ public class SecurityFilter implements WebFilter {
 
     // MDC (Mapped Diagnostic Context) key for logging the request ID
     private static final String REQUEST_ID_MDC_KEY = "requestId";
-
-    // Expected credentials (hardcoded for now – can be externalized later)
-    private String expectedApiKey = "frank";
-    private String expectedApiPassphrase = "frank";
+    @Value("${api.key}")
+    private String expectedApiKey;
+    @Value("${api.passphrase}")
+    private String expectedApiPassphrase;
 
     // ObjectMapper is used to convert Java objects to JSON
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -58,7 +59,7 @@ public class SecurityFilter implements WebFilter {
             // Extract API credentials from request headers
             String apiKey = request.getHeaders().getFirst(API_KEY_HEADER);
             String apiPassphrase = request.getHeaders().getFirst(API_PASSPHRASE_HEADER);
-log.info("dat:{} :{}",apiPassphrase,apiKey);
+            log.info("dat:{} :{}", apiPassphrase, apiKey);
             // Validate the credentials
             if (expectedApiKey.equals(apiKey) && expectedApiPassphrase.equals(apiPassphrase)) {
                 log.info("Request ID: {} - API Key Auth SUCCESS for {}", MDC.get(REQUEST_ID_MDC_KEY), path);

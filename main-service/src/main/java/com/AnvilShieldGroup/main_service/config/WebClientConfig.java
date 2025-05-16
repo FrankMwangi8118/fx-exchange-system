@@ -16,8 +16,15 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class WebClientConfig {
-    @Value("${RATE-SERVICE_BASE_URL}")
+
+
+    @Value("${rate-service.base.url}")
     private String baseUrl;
+    @Value("${rate-service.api.key}")
+    private String apiKey;
+    @Value("${rate-service.api.passphrase}")
+    private String passPhrase;
+
 
     @Value("${webclient.connection.timeout:5000}")
     private Integer connectionTimeoutMillis;
@@ -54,8 +61,8 @@ public class WebClientConfig {
 
         return WebClient.builder()
                 .baseUrl(baseUrl)
-                .defaultHeader("api-key", "frank")
-                .defaultHeader("api-passphrase", "frank")
+                .defaultHeader("api-key", apiKey)
+                .defaultHeader("api-passphrase", passPhrase)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }

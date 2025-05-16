@@ -1,4 +1,3 @@
-
 # later we would opt for multi-stage for smaller images
 FROM openjdk:17-jdk-alpine
 #  working dir
@@ -6,5 +5,5 @@ WORKDIR /app
 # Copy the built JAR file
 COPY target/*.jar app.jar
 # Expose the port
-EXPOSE 8081
+EXPOSE 8080
 CMD ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]
