@@ -1,4 +1,4 @@
-[# fx exchange Microservice Platform
+### fx exchange Microservice Platform
 
 ## Project Overview
 
@@ -224,6 +224,6 @@ to scale horizontally while maintaining a shared cache state. This would further
   to manage database schema evolution in a more controlled and versioned manner, which is crucial for production environments.
 
 Contact
-- Your Name: Frank mwangi
+- name: Frank mwangi
 - LinkedIn: https://www.linkedin.com/in/frank-mwangi-dev/
 - Email: frankmwangi@gmail.com
