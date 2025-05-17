@@ -21,6 +21,8 @@ log/
 *.iml
 *.ipr
 .env
+/*.log
+.idea/
 
 ### NetBeans ###
 /nbproject/private/
