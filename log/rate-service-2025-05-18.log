@@ -1,0 +1,210 @@
+2025-05-18 00:10:52 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-18 00:10:53 [main] INFO  c.A.r.RateServiceApplication - Starting RateServiceApplication using Java 17.0.13 with PID 648129 (/home/mwas/SPRINGBOOT-PROJECTS/Microservices/fx-exchange-system/rate-service/target/classes started by mwas in /home/mwas/SPRINGBOOT-PROJECTS/Microservices/fx-exchange-system)
+2025-05-18 00:10:53 [main] INFO  c.A.r.RateServiceApplication - The following 1 profile is active: "prod"
+2025-05-18 00:10:56 [main] WARN  o.s.b.w.r.c.AnnotationConfigReactiveWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-18 00:10:58 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-18 00:10:58 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8082 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8082 or configure this application to listen on another port.
+
+2025-05-18 00:11:30 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-18 00:11:30 [main] INFO  c.A.r.RateServiceApplication - Starting RateServiceApplication using Java 17.0.13 with PID 648213 (/home/mwas/SPRINGBOOT-PROJECTS/Microservices/fx-exchange-system/rate-service/target/classes started by mwas in /home/mwas/SPRINGBOOT-PROJECTS/Microservices/fx-exchange-system)
+2025-05-18 00:11:30 [main] INFO  c.A.r.RateServiceApplication - The following 1 profile is active: "prod"
+2025-05-18 00:11:33 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8083
+2025-05-18 00:11:33 [main] INFO  c.A.r.RateServiceApplication - Started RateServiceApplication in 4.48 seconds (process running for 6.043)
+2025-05-18 00:11:35 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :USD rates:{AUD=1.5613501581, BGN=1.7408903446, BRL=5.6662109302, CAD=1.3964201756, CHF=0.8372501327, CNY=7.2068912974, CZK=22.2870236033, DKK=6.6817808226, EUR=0.8949701423, GBP=0.752850123, HKD=7.8127413863, HRK=6.3732708363, HUF=360.4519209226, IDR=16417.550271431, ILS=3.554000692, INR=85.5256492266, ISK=130.7134253861, JPY=145.6056261722, KRW=1396.5656578896, MXN=19.4641227097, MYR=4.2956107505, NOK=10.3792113045, NZD=1.6996202402, PHP=55.7975061892, PLN=3.8205805666, RON=4.5708708951, RUB=81.0348840169, SEK=9.7758811774, SGD=1.2987201765, THB=33.2459333961, TRY=38.8369966243, USD=1.0, ZAR=18.0063721254}
+2025-05-18 00:11:35 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :EUR rates:{AUD=1.7445835166, BGN=1.9451937694, BRL=6.3311731447, CAD=1.5602980587, CHF=0.9355062176, CNY=8.0526611523, CZK=24.9025331125, DKK=7.4659259642, EUR=1.0, GBP=0.8412013847, HKD=8.7296112094, HRK=7.121210569, HUF=402.7530125153, IDR=18344.2435624045, ILS=3.9710829714, INR=95.5625726315, ISK=146.0533924072, JPY=162.6932780104, KRW=1560.4606141391, MXN=21.7483486764, MYR=4.7997252059, NOK=11.5972710305, NZD=1.8990803825, PHP=62.3456622204, PLN=4.2689475168, RON=5.1072887006, RUB=90.5447904761, SEK=10.9231366672, SGD=1.4511324067, THB=37.1475335598, TRY=43.3947399904, USD=1.1173557114, ZAR=20.1195227353}
+2025-05-18 00:11:36 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :JPY rates:{AUD=0.0107231444, BGN=0.0119562025, BRL=0.0389147801, CAD=0.0095904273, CHF=0.0057501221, CNY=0.0494959672, CZK=0.1530643025, DKK=0.0458895786, EUR=0.0061465354, GBP=0.0051704741, HKD=0.0536568647, HRK=0.0437707732, HUF=2.4755356671, IDR=112.7535432732, ILS=0.0244084022, INR=0.5873787399, ISK=0.8977223533, JPY=1.0, KRW=9.5914264758, MXN=0.133676996, MYR=0.0295016811, NOK=0.0712830375, NZD=0.0116727649, PHP=0.3832098227, PLN=0.0262392372, RON=0.031392131, RUB=0.556536764, SEK=0.0671394467, SGD=0.0089194368, THB=0.2283286317, TRY=0.2667273075, USD=0.0068678665, ZAR=0.1236653596}
+2025-05-18 00:11:36 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :GBP rates:{AUD=2.0739189786, BGN=2.3123996283, BRL=7.5263465557, CAD=1.8548448528, CHF=1.1121073201, CNY=9.572810148, CZK=29.60353319, DKK=8.8753134501, EUR=1.1887759794, GBP=1.0, HKD=10.3775521151, HRK=8.4655240686, HUF=478.7831069035, IDR=21807.196106988, ILS=4.7207280485, INR=113.6024908727, ISK=173.6247646015, JPY=193.4058609063, KRW=1855.0380948661, MXN=25.8539144978, MYR=5.7057980324, NOK=13.7865572275, NZD=2.2575811417, PHP=74.1150256665, PLN=5.0748222653, RON=6.071422127, RUB=107.6374719765, SEK=12.9851624895, SGD=1.725071348, THB=44.1600955893, TRY=51.5866245323, USD=1.3282856301, ZAR=23.9176053444}
+2025-05-18 00:11:36 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :CAD rates:{AUD=1.1181091375, BGN=1.246680888, BRL=4.0576690521, CAD=1.0, CHF=0.5995689172, CNY=5.1609762042, CZK=15.9601128605, DKK=4.7849357517, EUR=0.640903188, GBP=0.5391286492, HKD=5.5948356539, HRK=4.564006556, HUF=258.1256896892, IDR=11756.8841802052, ILS=2.5450797361, INR=61.246357451, ISK=93.6060848089, JPY=104.2706405396, KRW=1000.1041823171, MXN=13.938586, MYR=3.0761591859, NOK=7.4327279753, NZD=1.2171266714, PHP=39.9575336737, PLN=2.7359820728, RON=3.2732776101, RUB=58.030444871, SEK=7.0006731127, SGD=0.9300353856, THB=23.807972684, TRY=27.8118272014, USD=0.7161168375, ZAR=12.8946662617}
+2025-05-18 00:11:37 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :CHF rates:{AUD=1.8648550739, BGN=2.0792953941, BRL=6.7676441112, CAD=1.6678649797, CHF=1.0, CNY=8.6078114723, CZK=26.6193133125, DKK=7.9806267705, EUR=1.0689399826, GBP=0.8991937936, HKD=9.3314304545, HRK=7.6121467019, HUF=430.5187981998, IDR=19608.8953948409, ILS=4.2448493624, INR=102.1506547282, ISK=156.1223107419, JPY=173.9093497694, KRW=1668.0387417628, MXN=23.2476794562, MYR=5.1306181782, NOK=12.3967866939, NZD=2.0300029511, PHP=66.6437710906, PLN=4.5632486845, RON=5.4593850948, RUB=96.7869467582, SEK=11.6761775192, SGD=1.5511734496, THB=39.7084838779, TRY=46.3863726113, USD=1.1943861947, ZAR=21.506562283}
+2025-05-18 00:11:37 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :AUD rates:{AUD=1.0, BGN=1.1149903406, BRL=3.6290456057, CAD=0.8943670761, CHF=0.5362346994, CNY=4.6158071974, CZK=14.2741994726, DKK=4.2794889974, EUR=0.5732027103, GBP=0.4821789136, HKD=5.0038368048, HRK=4.0818971985, HUF=230.8591183423, IDR=10514.9701277832, ILS=2.2762355219, INR=54.7767256326, ISK=83.7182003716, JPY=93.2562278979, KRW=894.4602532907, MXN=12.4662124052, MYR=2.7512154965, NOK=6.6475871864, NZD=1.0885580223, PHP=35.7367025582, PLN=2.4469722866, RON=2.9275117253, RUB=51.9005193015, SEK=6.2611715423, SGD=0.8317930285, THB=21.2930669162, TRY=24.8739825739, USD=0.6404713221, ZAR=11.5325649612}
+2025-05-18 00:11:50 [reactor-http-epoll-1] INFO  c.A.r.filter.SecurityFilter - dat:test-api-key-mwas-hungry-for-success :test-api-key-mwas-hungry-for-success
+2025-05-18 00:11:50 [reactor-http-epoll-1] INFO  c.A.r.filter.SecurityFilter - Request ID: null - API Key Auth SUCCESS for /api/v1/rateService/rate
+2025-05-18 00:11:50 [reactor-http-epoll-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache hit for:CAD:1.3964201756
+2025-05-18 00:11:50 [reactor-http-epoll-1] INFO  c.A.r.f.RequestResponseLoggingFilter - ID: 7a8de8a2-e806-4953-9ac7-790e403b6ab4 Method: GET URI:http://localhost:8083/api/v1/rateService/rate?from=USD&to=CAD | Req Body: [No Body] | Status: 200 OK | Duration: 806ms | Res Body: {"responseCode":200,"responseStatus":"success","data":{"to":"CAD","from":"USD","rate":1.3964201756}}
+2025-05-18 00:13:04 [reactor-http-epoll-2] INFO  c.A.r.filter.SecurityFilter - dat:test-api-key-mwas-hungry-for-success :test-api-key-mwas-hungry-for-success
+2025-05-18 00:13:04 [reactor-http-epoll-2] INFO  c.A.r.filter.SecurityFilter - Request ID: null - API Key Auth SUCCESS for /api/v1/rateService/rate
+2025-05-18 00:13:04 [reactor-http-epoll-2] INFO  c.A.r.i.cache.CacheServiceImpl - cache hit for:CAD:1.3964201756
+2025-05-18 00:13:04 [reactor-http-epoll-2] INFO  c.A.r.f.RequestResponseLoggingFilter - ID: a5347532-c8cf-4bf8-99e3-9638258df3d4 Method: GET URI:http://localhost:8083/api/v1/rateService/rate?from=USD&to=CAD | Req Body: [No Body] | Status: 200 OK | Duration: 6ms | Res Body: {"responseCode":200,"responseStatus":"success","data":{"to":"CAD","from":"USD","rate":1.3964201756}}
+2025-05-18 00:21:38 [reactor-http-epoll-3] WARN  r.n.http.client.HttpClientConnect - [1bc97007-8, L:/192.168.1.180:38962 - R:api.freecurrencyapi.com/104.21.14.78:443] The connection observed an error
+io.netty.handler.timeout.ReadTimeoutException: null
+2025-05-18 00:21:38 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+org.springframework.web.reactive.function.client.WebClientRequestException: null
+	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Request to GET https://api.freecurrencyapi.com/v1/latest [DefaultWebClient]
+Original Stack Trace:
+		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
+		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:55)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4495)
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93)
+		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204)
+		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:225)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:274)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onError(FluxContextWrite.java:121)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.maybeOnError(FluxConcatMapNoPrefetch.java:326)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.onNext(FluxConcatMapNoPrefetch.java:211)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.SinkManyEmitterProcessor.drain(SinkManyEmitterProcessor.java:471)
+		at reactor.core.publisher.SinkManyEmitterProcessor$EmitterInner.drainParent(SinkManyEmitterProcessor.java:615)
+		at reactor.core.publisher.FluxPublish$PubSubInner.request(FluxPublish.java:873)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.request(FluxContextWrite.java:136)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.request(FluxConcatMapNoPrefetch.java:336)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.request(FluxContextWrite.java:136)
+		at reactor.core.publisher.Operators$DeferredSubscription.request(Operators.java:1717)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:192)
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:201)
+		at reactor.netty.http.client.HttpClientConnect$HttpObserver.onUncaughtException(HttpClientConnect.java:403)
+		at reactor.netty.ReactorNetty$CompositeConnectionObserver.onUncaughtException(ReactorNetty.java:703)
+		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onUncaughtException(DefaultPooledConnectionProvider.java:223)
+		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnection.onUncaughtException(DefaultPooledConnectionProvider.java:476)
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:247)
+		at reactor.netty.channel.FluxReceive.onInboundError(FluxReceive.java:468)
+		at reactor.netty.channel.ChannelOperations.onInboundError(ChannelOperations.java:515)
+		at reactor.netty.channel.ChannelOperationsHandler.exceptionCaught(ChannelOperationsHandler.java:145)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325)
+		at io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:317)
+		at io.netty.handler.timeout.ReadTimeoutHandler.readTimedOut(ReadTimeoutHandler.java:98)
+		at io.netty.handler.timeout.ReadTimeoutHandler.channelIdle(ReadTimeoutHandler.java:90)
+		at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:525)
+		at io.netty.handler.timeout.IdleStateHandler$AbstractIdleTask.run(IdleStateHandler.java:497)
+		at io.netty.util.concurrent.PromiseTask.runTask(PromiseTask.java:98)
+		at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:153)
+		at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173)
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166)
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:470)
+		at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:416)
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:103)
+		at reactor.core.publisher.Mono.block(Mono.java:1712)
+		at com.AnvilShieldGroup.rate_service.infrastructure.scheduler.SchedulerServiceImpl.preFetchMajorCurrenciesRates(SchedulerServiceImpl.java:37)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+		at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+		at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: io.netty.handler.timeout.ReadTimeoutException: null
+2025-05-18 00:31:34 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :USD rates:{AUD=1.5613501581, BGN=1.7408903446, BRL=5.6662109302, CAD=1.3964201756, CHF=0.8372501327, CNY=7.2068912974, CZK=22.2870236033, DKK=6.6817808226, EUR=0.8949701423, GBP=0.752850123, HKD=7.8127413863, HRK=6.3732708363, HUF=360.4519209226, IDR=16417.550271431, ILS=3.554000692, INR=85.5256492266, ISK=130.7134253861, JPY=145.6056261722, KRW=1396.5656578896, MXN=19.4641227097, MYR=4.2956107505, NOK=10.3792113045, NZD=1.6996202402, PHP=55.7975061892, PLN=3.8205805666, RON=4.5708708951, RUB=81.0348840169, SEK=9.7758811774, SGD=1.2987201765, THB=33.2459333961, TRY=38.8369966243, USD=1.0, ZAR=18.0063721254}
+2025-05-18 00:31:34 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :EUR rates:{AUD=1.7445835166, BGN=1.9451937694, BRL=6.3311731447, CAD=1.5602980587, CHF=0.9355062176, CNY=8.0526611523, CZK=24.9025331125, DKK=7.4659259642, EUR=1.0, GBP=0.8412013847, HKD=8.7296112094, HRK=7.121210569, HUF=402.7530125153, IDR=18344.2435624045, ILS=3.9710829714, INR=95.5625726315, ISK=146.0533924072, JPY=162.6932780104, KRW=1560.4606141391, MXN=21.7483486764, MYR=4.7997252059, NOK=11.5972710305, NZD=1.8990803825, PHP=62.3456622204, PLN=4.2689475168, RON=5.1072887006, RUB=90.5447904761, SEK=10.9231366672, SGD=1.4511324067, THB=37.1475335598, TRY=43.3947399904, USD=1.1173557114, ZAR=20.1195227353}
+2025-05-18 00:31:35 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :JPY rates:{AUD=0.0107231444, BGN=0.0119562025, BRL=0.0389147801, CAD=0.0095904273, CHF=0.0057501221, CNY=0.0494959672, CZK=0.1530643025, DKK=0.0458895786, EUR=0.0061465354, GBP=0.0051704741, HKD=0.0536568647, HRK=0.0437707732, HUF=2.4755356671, IDR=112.7535432732, ILS=0.0244084022, INR=0.5873787399, ISK=0.8977223533, JPY=1.0, KRW=9.5914264758, MXN=0.133676996, MYR=0.0295016811, NOK=0.0712830375, NZD=0.0116727649, PHP=0.3832098227, PLN=0.0262392372, RON=0.031392131, RUB=0.556536764, SEK=0.0671394467, SGD=0.0089194368, THB=0.2283286317, TRY=0.2667273075, USD=0.0068678665, ZAR=0.1236653596}
+2025-05-18 00:31:35 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :GBP rates:{AUD=2.0739189786, BGN=2.3123996283, BRL=7.5263465557, CAD=1.8548448528, CHF=1.1121073201, CNY=9.572810148, CZK=29.60353319, DKK=8.8753134501, EUR=1.1887759794, GBP=1.0, HKD=10.3775521151, HRK=8.4655240686, HUF=478.7831069035, IDR=21807.196106988, ILS=4.7207280485, INR=113.6024908727, ISK=173.6247646015, JPY=193.4058609063, KRW=1855.0380948661, MXN=25.8539144978, MYR=5.7057980324, NOK=13.7865572275, NZD=2.2575811417, PHP=74.1150256665, PLN=5.0748222653, RON=6.071422127, RUB=107.6374719765, SEK=12.9851624895, SGD=1.725071348, THB=44.1600955893, TRY=51.5866245323, USD=1.3282856301, ZAR=23.9176053444}
+2025-05-18 00:31:36 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :CAD rates:{AUD=1.1181091375, BGN=1.246680888, BRL=4.0576690521, CAD=1.0, CHF=0.5995689172, CNY=5.1609762042, CZK=15.9601128605, DKK=4.7849357517, EUR=0.640903188, GBP=0.5391286492, HKD=5.5948356539, HRK=4.564006556, HUF=258.1256896892, IDR=11756.8841802052, ILS=2.5450797361, INR=61.246357451, ISK=93.6060848089, JPY=104.2706405396, KRW=1000.1041823171, MXN=13.938586, MYR=3.0761591859, NOK=7.4327279753, NZD=1.2171266714, PHP=39.9575336737, PLN=2.7359820728, RON=3.2732776101, RUB=58.030444871, SEK=7.0006731127, SGD=0.9300353856, THB=23.807972684, TRY=27.8118272014, USD=0.7161168375, ZAR=12.8946662617}
+2025-05-18 00:31:36 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :CHF rates:{AUD=1.8648550739, BGN=2.0792953941, BRL=6.7676441112, CAD=1.6678649797, CHF=1.0, CNY=8.6078114723, CZK=26.6193133125, DKK=7.9806267705, EUR=1.0689399826, GBP=0.8991937936, HKD=9.3314304545, HRK=7.6121467019, HUF=430.5187981998, IDR=19608.8953948409, ILS=4.2448493624, INR=102.1506547282, ISK=156.1223107419, JPY=173.9093497694, KRW=1668.0387417628, MXN=23.2476794562, MYR=5.1306181782, NOK=12.3967866939, NZD=2.0300029511, PHP=66.6437710906, PLN=4.5632486845, RON=5.4593850948, RUB=96.7869467582, SEK=11.6761775192, SGD=1.5511734496, THB=39.7084838779, TRY=46.3863726113, USD=1.1943861947, ZAR=21.506562283}
+2025-05-18 00:31:37 [scheduling-1] INFO  c.A.r.i.cache.CacheServiceImpl - cache put for currency :AUD rates:{AUD=1.0, BGN=1.1149903406, BRL=3.6290456057, CAD=0.8943670761, CHF=0.5362346994, CNY=4.6158071974, CZK=14.2741994726, DKK=4.2794889974, EUR=0.5732027103, GBP=0.4821789136, HKD=5.0038368048, HRK=4.0818971985, HUF=230.8591183423, IDR=10514.9701277832, ILS=2.2762355219, INR=54.7767256326, ISK=83.7182003716, JPY=93.2562278979, KRW=894.4602532907, MXN=12.4662124052, MYR=2.7512154965, NOK=6.6475871864, NZD=1.0885580223, PHP=35.7367025582, PLN=2.4469722866, RON=2.9275117253, RUB=51.9005193015, SEK=6.2611715423, SGD=0.8317930285, THB=21.2930669162, TRY=24.8739825739, USD=0.6404713221, ZAR=11.5325649612}
+2025-05-18 00:41:33 [reactor-http-epoll-3] WARN  r.n.http.client.HttpClientConnect - [627b32b3-8, L:/192.168.1.197:50072 - R:api.freecurrencyapi.com/104.21.14.78:443] The connection observed an error, the request cannot be retried as the headers/body were sent
+io.netty.channel.unix.Errors$NativeIoException: recvAddress(..) failed: Connection reset by peer
+2025-05-18 00:41:33 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+org.springframework.web.reactive.function.client.WebClientRequestException: recvAddress(..) failed: Connection reset by peer
+	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Request to GET https://api.freecurrencyapi.com/v1/latest [DefaultWebClient]
+Original Stack Trace:
+		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:136)
+		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:55)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4495)
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222)
+		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93)
+		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204)
+		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:225)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:274)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onError(FluxContextWrite.java:121)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.maybeOnError(FluxConcatMapNoPrefetch.java:326)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.onNext(FluxConcatMapNoPrefetch.java:211)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.SinkManyEmitterProcessor.drain(SinkManyEmitterProcessor.java:471)
+		at reactor.core.publisher.SinkManyEmitterProcessor$EmitterInner.drainParent(SinkManyEmitterProcessor.java:615)
+		at reactor.core.publisher.FluxPublish$PubSubInner.request(FluxPublish.java:873)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.request(FluxContextWrite.java:136)
+		at reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber.request(FluxConcatMapNoPrefetch.java:336)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.request(FluxContextWrite.java:136)
+		at reactor.core.publisher.Operators$DeferredSubscription.request(Operators.java:1717)
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:192)
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:201)
+		at reactor.netty.http.client.HttpClientConnect$HttpObserver.onUncaughtException(HttpClientConnect.java:403)
+		at reactor.netty.ReactorNetty$CompositeConnectionObserver.onUncaughtException(ReactorNetty.java:703)
+		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onUncaughtException(DefaultPooledConnectionProvider.java:223)
+		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnection.onUncaughtException(DefaultPooledConnectionProvider.java:476)
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:247)
+		at reactor.netty.channel.FluxReceive.onInboundError(FluxReceive.java:468)
+		at reactor.netty.channel.ChannelOperations.onInboundError(ChannelOperations.java:515)
+		at reactor.netty.channel.ChannelOperationsHandler.exceptionCaught(ChannelOperationsHandler.java:145)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325)
+		at io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:317)
+		at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireExceptionCaught(CombinedChannelDuplexHandler.java:424)
+		at io.netty.channel.ChannelHandlerAdapter.exceptionCaught(ChannelHandlerAdapter.java:92)
+		at io.netty.channel.CombinedChannelDuplexHandler$1.fireExceptionCaught(CombinedChannelDuplexHandler.java:145)
+		at io.netty.channel.ChannelInboundHandlerAdapter.exceptionCaught(ChannelInboundHandlerAdapter.java:143)
+		at io.netty.channel.CombinedChannelDuplexHandler.exceptionCaught(CombinedChannelDuplexHandler.java:231)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325)
+		at io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:317)
+		at io.netty.handler.ssl.SslHandler.exceptionCaught(SslHandler.java:1204)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325)
+		at io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:317)
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.exceptionCaught(DefaultChannelPipeline.java:1377)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325)
+		at io.netty.channel.DefaultChannelPipeline.fireExceptionCaught(DefaultChannelPipeline.java:907)
+		at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.handleReadException(AbstractEpollStreamChannel.java:728)
+		at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:826)
+		at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:509)
+		at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:407)
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:103)
+		at reactor.core.publisher.Mono.block(Mono.java:1712)
+		at com.AnvilShieldGroup.rate_service.infrastructure.scheduler.SchedulerServiceImpl.preFetchMajorCurrenciesRates(SchedulerServiceImpl.java:37)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+		at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+		at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: io.netty.channel.unix.Errors$NativeIoException: recvAddress(..) failed: Connection reset by peer

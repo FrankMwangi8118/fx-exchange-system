@@ -2,18 +2,18 @@ server:
   port: ${SERVER-PORT}
 rate-service:
   base:
-    url: ${RATE-SERVICE_BASE_URL}
+    url: ${RATE_SERVICE_BASE_URL}
   api:
-    key: ${RATE-SERVICE-API-KEY}
-    passphrase: ${RATE-SERVICE-API-PASSPHRASE}
+    key: ${RATE_SERVICE_API_KEY}
+    passphrase: ${RATE_SERVICE_API_PASSPHRASE}
 spring:
   datasource:
-    url: jdbc:${POSTGRES_PROVIDER}://${POSTGRES_HOST}:${POSTGRES_PORT}/{POSTGRES_DB}
+    url: jdbc:${POSTGRES_PROVIDER}://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
     password: ${POSTGRES_PASSWORD}
-    username: ${POSTGRES_PORT}
+    username: ${POSTGRES_USERNAME}
     driver-class-name: ${DRIVER_CLASS_NAME}
 api:
-  key: ${API-KEY}
-  passphrase: ${api-passphrase}
+  key: ${API_KEY}
+  passphrase: ${API_PASSPHRASE}
 
 
