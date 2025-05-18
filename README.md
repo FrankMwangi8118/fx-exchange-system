@@ -121,7 +121,7 @@ navigate back to the root dir
 cd ..
 ```
 ## 3.building /running the actual containers
-
+- **_each service has a docker file_**
 ```bash
 cd DeploymentFiles
   ```
