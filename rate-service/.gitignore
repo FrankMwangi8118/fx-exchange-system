@@ -20,7 +20,7 @@ log/
 *.iws
 *.iml
 *.ipr
-.env
+../prodDeploymentFiles/.env
 /*.log
 .idea/
 

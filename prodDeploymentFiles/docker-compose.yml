@@ -13,21 +13,22 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - currency_db_data:/var/lib/postgresql/data
-      - ./main-service/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ../main-service/src/main/resources/Schema.sql:/docker-entrypoint-initdb.d/Schema.sql
+
     restart: unless-stopped
 
   rate-service:
     build:
-      context: ./rate-service
+      context: ../rate-service
       dockerfile: Dockerfile
     container_name: currency-rate-service
     ports:
-      - "${RATE_SERVICE_PORT}:8081"
+      - "${RATE_SERVICE_PORT}:${RATE_SERVICE_PORT}"
     environment:
       - SERVER_PORT=${RATE_SERVICE_PORT}
       - APPLICATION_NAME=rate-service
       - IMAGE_NAME=rate-service
-      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
+      - ACTIVE_PROFILE=${RATE_SERVICE_ACTIVE_PROFILE}
       - EXCHANGE_RATE_IO_API_KEY=${EXCHANGE_RATE_IO_API_KEY}
       - EXCHANGE_BASE_URL=${EXCHANGE_BASE_URL}
       - CACHE_TTL=${CACHE_TTL}
@@ -49,29 +50,28 @@ services:
 
   main-service:
     build:
-      context: ./main-service
+      context: ../main-service
       dockerfile: Dockerfile
     container_name: currency-main-service
     ports:
-      - "${SERVER_PORT}:8081"
+      - "${MAIN_SERVICE_PORT}:${MAIN_SERVICE_PORT}"
     environment:
-      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
-      - SERVER_PORT=8081
+      - ACTIVE_PROFILE=${MAIN_ACTIVE_PROFILE}
+      - SERVER_PORT=${MAIN_SERVICE_PORT}
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
       - RATE_SERVICE_BASE_URL=http://rate-service:8081/api/v1/rateService
-      - RATE-SERVICE-API-KEY=${API-KEY}
-      - RATE-SERVICE-API-PASSPHRASE=${API-PASSPHRASE}
-      - API-KEY=${API-KEY}
-      - API-PASSPHRASE=${API-PASSPHRASE}
+      - RATE_SERVICE_API_KEY=${RATE_SERVICE_API_KEY}
+      - RATE_SERVICE_API_PASSPHRASE=${RATE_SERVICE_API_PASSPHRASE}
+      - API_KEY=${API_KEY}
+      - API_PASSPHRASE=${API_PASSPHRASE}
     volumes:
       - ./logs:/app/logs
     depends_on:
       - postgres
       - rate-service
     restart: unless-stopped
-
 volumes:
   currency_db_data:

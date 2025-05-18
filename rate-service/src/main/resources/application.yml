@@ -1,11 +1,11 @@
 server:
-   port: ${SERVER_PORT}
+   port: ${RATE_SERVICE_PORT}
 spring:
    application:
       name: rate-service
 
    profiles:
-      active: ${ACTIVE_PROFILE}
+      active: ${RATE_SERVICE_ACTIVE_PROFILE}
 
    output:
       ansi:

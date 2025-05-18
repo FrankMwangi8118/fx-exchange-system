@@ -70,3 +70,5 @@ io.netty.handler.timeout.ReadTimeoutException: null
     "to":"CAD",
     "amount":234
 } | Status: 422 UNPROCESSABLE_ENTITY | Res Body: {"responseCode":422,"responseMessage":"WebClient error: 422 Unprocessable Entity from GET http://localhost:8082/api/v1/rateService/rate","path":"/api/v1/mainService/convert"} | Duration: 341ms
+2025-05-18 01:17:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-18 01:17:12 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER-PORT}
+  port: ${MAIN_SERVICE_PORT}
 rate-service:
   base:
     url: ${RATE_SERVICE_BASE_URL}

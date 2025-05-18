@@ -7,7 +7,7 @@ spring:
       mode: always
 
   profiles:
-    active: ${ACTIVE_PROFILE}
+    active: ${MAIN_ACTIVE_PROFILE}
 
   output:
     ansi:

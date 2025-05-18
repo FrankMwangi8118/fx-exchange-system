@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.lang.reflect.Array;
@@ -33,11 +34,15 @@ public class SchedulerServiceImpl implements SchedulerService {
     @Scheduled(fixedRateString = "${cache.entry.schedule-time}")
     public void preFetchMajorCurrenciesRates() {
         List<String> majorCurrencies = List.of("USD", "EUR", "JPY", "GBP", "CAD", "CHF", "AUD");
-        for (String currency : majorCurrencies) {
-            ExternalExchangeRateResponseDto externalExchangeRateResponseDto = exchangeRateClient.fetchExchangeRate(currency, null).block();
-            cacheService.putRate(currency, externalExchangeRateResponseDto.getData());
-        }
 
+        Flux.fromIterable(majorCurrencies)
+                .flatMap(currency -> exchangeRateClient.fetchExchangeRate(currency, null)
+                        .doOnNext(response -> cacheService.putRate(currency, response.getData()))
+                        .doOnError(e -> log.error("Error fetching rate for " + currency, e))
+                        .onErrorResume(e -> Mono.empty()) // ignore failed calls
+                )
+                .blockLast(); // Wait for all to complete before method ends
     }
+
 
 }

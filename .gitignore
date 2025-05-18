@@ -1,3 +1,6 @@
+./prodDeploymentFiles/.env
+/out
+.idea
 /shelf/
 /workspace.xml
 /out/
