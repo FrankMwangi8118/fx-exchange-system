@@ -33,6 +33,8 @@ log/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+!prodDeploymentFiles/.env
 .env
 ### VS Code ###
 .vscode/
+

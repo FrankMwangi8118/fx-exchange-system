@@ -99,24 +99,40 @@ To run this project locally using Docker Compose:
 git clone https://github.com/FrankMwangi8118/fx-exchange-system.git
 cd fx-exchange-system 
 ```
-
+```bash
+cd rate-service
+```
+```bash
+mvn clean install -DskipTests
+```
+```bash
+cd ..
+cd main-service
+```
+```bash
+mvn clean install -DskipTests
+```
+```
+bash
+cd ..
+```
 3.
 
 ```bash
-   cp ./rate-serviceExample.env
-   cp ./main-serviceExample.env
-   ```
+cd DeploymentFiles
+  ```
+- in the directory we have an example env file and a docker-compose.yml file.
+- fill in the appropriate variables in the env 
+```bash
+docker-compose build
+```
+run the containers
+```bash
+docker-compose up
+```
 
-Edit the newly created.env files for both services and fill in the required values, including:
-
-- Your freecurrencyapi.com API Key.
-- Database credentials (username, password, database name) - ensure these match the configuration in docker-compose.yml
-  and the Spring Boot application properties.
-- API Keys/passphrases for service-to-service authentication (e.g., main-service calling rate-service).
-- caffeine and webclient configs
-
-4. ### Build Docker Images:
-
+4. ### Alternatively :Build Docker Images:
+in each service there is a provided deploy.sh file
 Use the provided deployment script to build the Docker images for both services:
 for rate service
 
@@ -159,6 +175,28 @@ docker-compose up -d
 
 The main-service API is available at http://localhost:8080. You will need to provide the configured API Key
 credentials (as configured in the security setup and.env file) to access the /convert endpoint.
+## API Documentation
+- Both main-service and rate-service include integrated Swagger UI for easy API exploration and testing.
+
+-After running the services via Docker Compose or deployment scripts, access the documentation at:
+Main Service Swagger UI:
+http://localhost:8080/webjars/swagger-ui/index.html#
+![img_3.png](img_3.png)
+
+Rate Service Swagger UI:
+http://localhost:8081/webjars/swagger-ui/index.html#
+![img_4.png](img_4.png)
+
+## logging
+For better debugging and traceability, structured logs are enabled in both services. Logs are:
+
+   - Written to files inside the container (mounted via ./logs)
+
+   - Rolled daily to ensure clean and organized log history
+
+   - Useful for tracking application behavior in production and development
+
+You can view logs by navigating to the logs/ directory in the project root for every service.
 
 ## Technical Highlights & Design Decisions
  ### intelligent Background-Aware Lazy Caching (Caffeine).
