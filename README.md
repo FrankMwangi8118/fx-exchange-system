@@ -99,24 +99,28 @@ To run this project locally using Docker Compose:
 git clone https://github.com/FrankMwangi8118/fx-exchange-system.git
 cd fx-exchange-system 
 ```
+- navigate to the rate-service to create the jar
 ```bash
 cd rate-service
 ```
+- run  mvn install 
 ```bash
 mvn clean install -DskipTests
 ```
+- navigate back to the root and into main-service
 ```bash
 cd ..
 cd main-service
 ```
+- create the jar file
 ```bash
 mvn clean install -DskipTests
 ```
-```
-bash
+navigate back to the root dir
+```bash
 cd ..
 ```
-3.
+## 3.building /running the actual containers
 
 ```bash
 cd DeploymentFiles
