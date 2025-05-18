@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "90990f0c-71b2-4a46-80cb-1e6d61725ac9",
+		"name": "main-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34789021"
+	},
+	"item": [
+		{
+			"name": "get-server-status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/status"
+			},
+			"response": [
+				{
+					"name": "get-server-status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/status"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"up\"\n}"
+				}
+			]
+		},
+		{
+			"name": "convert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "api-passphrase",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"to\":\"CAD\",\n    \"from\":\"USD\",\n    \"amount\":230\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/convert"
+			},
+			"response": [
+				{
+					"name": "convert",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "api-passphrase",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"to\":\"CAD\",\n    \"from\":\"USD\",\n    \"amount\":230\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/convert"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"responseCode\": 200,\n    \"responseStatus\": \"success\",\n    \"responseMessage\": \"success\",\n    \"data\": {\n        \"fromCurrency\": \"USD\",\n        \"toCurrency\": \"CAD\",\n        \"rate\": 1.3953901407,\n        \"amount\": 230,\n        \"convertedAmount\": 320.939732361,\n        \"requestedAt\": \"2025-05-18T22:16:44.522+00:00\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http:localhost:8080",
+			"type": "string"
+		}
+	]
+}

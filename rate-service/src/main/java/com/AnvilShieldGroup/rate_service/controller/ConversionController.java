@@ -1,4 +1,5 @@
 package com.AnvilShieldGroup.rate_service.controller;
+
 import com.AnvilShieldGroup.rate_service.controller.Dto.RequestDto;
 import com.AnvilShieldGroup.rate_service.controller.Dto.ResponseDto;
 import com.AnvilShieldGroup.rate_service.exception.CustomExceptionDto;
@@ -15,10 +16,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
-
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/rateService")
 @Tag(name = "Currency Conversion", description = "API for converting currencies and fetching rates") // Added Tag
@@ -86,7 +88,7 @@ public class ConversionController {
         if (!violations.isEmpty()) {
             return Mono.error(new ConstraintViolationException(violations));
         }
-
+       log.info("fetch rate attempt for values from:{} to:{}",requestDto.getFrom(),requestDto.getTo());
         return currencyConversionService.getCurrencyQuote(requestDto)
                 .map(responseDto -> ResponseEntity.ok(
                         com.AnvilShieldGroup.rate_service.controller.response.ApiResponse.<ResponseDto>builder()

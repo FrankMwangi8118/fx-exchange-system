@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "456f5e3d-b665-4b69-ae2a-88e61c5ac20e",
+		"name": "rate-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34789021"
+	},
+	"item": [
+		{
+			"name": "get-server-status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "api-passphrase",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/status"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "api-passphrase",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/status"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"up\"\n}"
+				}
+			]
+		},
+		{
+			"name": "fetch-rate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "api-passphrase",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/rate?from=USD&to=CAD",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rate"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "USD"
+						},
+						{
+							"key": "to",
+							"value": "CAD"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "api-passphrase",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/rate?from=USD&to=CAD",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rate"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "USD"
+								},
+								{
+									"key": "to",
+									"value": "CAD"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"responseCode\": 200,\n    \"responseStatus\": \"success\",\n    \"data\": {\n        \"to\": \"CAD\",\n        \"from\": \"USD\",\n        \"rate\": 1.3953901407\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
