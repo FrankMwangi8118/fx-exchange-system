@@ -5,7 +5,3 @@
 *.iml
 .idea/
 fx-exchange-system.iml
-*.env
-.env
-**/.env
-*.env.*
